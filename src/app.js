@@ -24,7 +24,7 @@ export default class App extends React.Component {
             uploaderIsVisible: false,
             onlineUsersIsVisible: false,
             editProfileButtonIsVisible: true,
-            bioEditorIsVisible: false
+            bioEditorIsVisible: false,
         };
         this.showModal = this.showModal.bind(this);
         this.hideModalOnBody = this.hideModalOnBody.bind(this);
@@ -34,15 +34,14 @@ export default class App extends React.Component {
         this.hideEditProfileButton = this.hideEditProfileButton.bind(this);
         this.showEditProfileButton = this.showEditProfileButton.bind(this);
         this.setImage = this.setImage.bind(this);
-        this.showBioAndEditProfileButton = this.showBioAndEditProfileButton.bind(
-            this
-        );
+        this.showBioAndEditProfileButton =
+            this.showBioAndEditProfileButton.bind(this);
     }
 
     componentDidMount() {
         axios
             .get("/getUserInfo")
-            .then(res => {
+            .then((res) => {
                 this.getUserData(
                     res.data[0].fname,
                     res.data[0].lname,
@@ -50,7 +49,7 @@ export default class App extends React.Component {
                     res.data[0].profileimgurl
                 );
             })
-            .catch(function(err) {
+            .catch(function (err) {
                 console.log("Error in /getUserInfo in app.js", err);
             });
     }
@@ -58,11 +57,11 @@ export default class App extends React.Component {
     showModal() {
         if (this.state.uploaderIsVisible === false) {
             this.setState({
-                uploaderIsVisible: true
+                uploaderIsVisible: true,
             });
         } else if (this.state.uploaderIsVisible === true) {
             this.setState({
-                uploaderIsVisible: false
+                uploaderIsVisible: false,
             });
         }
     }
@@ -70,11 +69,11 @@ export default class App extends React.Component {
     showOnlineUsers() {
         if (this.state.onlineUsersIsVisible === false) {
             this.setState({
-                onlineUsersIsVisible: true
+                onlineUsersIsVisible: true,
             });
         } else if (this.state.onlineUsersIsVisible === true) {
             this.setState({
-                onlineUsersIsVisible: false
+                onlineUsersIsVisible: false,
             });
         }
     }
@@ -82,7 +81,7 @@ export default class App extends React.Component {
     hideModalOnBody() {
         if (this.state.uploaderIsVisible === true) {
             this.setState({
-                uploaderIsVisible: false
+                uploaderIsVisible: false,
             });
         }
     }
@@ -95,11 +94,11 @@ export default class App extends React.Component {
     showBioEditor() {
         if (this.state.bioEditorIsVisible === false) {
             this.setState({
-                bioEditorIsVisible: true
+                bioEditorIsVisible: true,
             });
         } else if (this.state.bioEditorIsVisible === true) {
             this.setState({
-                bioEditorIsVisible: false
+                bioEditorIsVisible: false,
             });
         }
     }
@@ -107,11 +106,11 @@ export default class App extends React.Component {
     hideEditProfileButton() {
         if (this.state.editProfileButtonIsVisible === true) {
             this.setState({
-                editProfileButtonIsVisible: false
+                editProfileButtonIsVisible: false,
             });
         } else if (this.editProfileButtonIsVisible === false) {
             this.setState({
-                editProfileButtonIsVisible: true
+                editProfileButtonIsVisible: true,
             });
         }
     }
@@ -119,11 +118,11 @@ export default class App extends React.Component {
     showEditProfileButton() {
         if (this.state.editProfileButtonIsVisible === false) {
             this.setState({
-                editProfileButtonIsVisible: true
+                editProfileButtonIsVisible: true,
             });
         } else if (this.editProfileButtonIsVisible === true) {
             this.setState({
-                editProfileButtonIsVisible: false
+                editProfileButtonIsVisible: false,
             });
         }
     }
@@ -133,7 +132,7 @@ export default class App extends React.Component {
             fname: fname,
             lname: lname,
             bio: bio,
-            imageurl: profileimgurl
+            imageurl: profileimgurl,
         });
     }
 
@@ -181,7 +180,7 @@ export default class App extends React.Component {
 
                 {this.state.uploaderIsVisible && (
                     <Uploader
-                        setImage={imageurl =>
+                        setImage={(imageurl) =>
                             this.setState({ imageurl: imageurl })
                         }
                         showModal={this.showModal}
